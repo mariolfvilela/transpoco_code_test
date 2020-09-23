@@ -1,3 +1,3 @@
-import { Console } from "console";
+import { Console } from 'console';
 
-console.log("Project ok");
+console.log('Project ok');
