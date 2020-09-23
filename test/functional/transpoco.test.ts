@@ -1,10 +1,9 @@
-import supertest from "supertest";
-
 describe("Transpoco functional tests", () => {
   it("should return a dataset with just a few times", async () => {
-    const { body, status } = await supertest(app).get("/tracking");
+    const { body, status } = await global.testRequest.get('/transpoco');
     expect(status).toBe(200);
-    expect(body).toBe([
+    // Make sure we use toEqual to check value not the object and array itself
+    expect(body).toEqual([
       {
         time: "2020-07-02 08:51:18",
         tracking: [
@@ -30,8 +29,8 @@ describe("Transpoco functional tests", () => {
         time: "2020-07-02 08:51:18",
         tracking: [
           {
-            uid: 234827,
-            tracker_uid: 1101,
+            uid: 3458765,
+            tracker_uid: 1011,
             angle: 174,
             speed: 87,
             aquisition_time: 928364,
