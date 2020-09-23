@@ -2,7 +2,7 @@ import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
-import { TranspocoController } from './controllers/transpoco';
+import { TranspocoController } from './controllers/transpoco-controller';
 
 export class SetupServer extends Server {
   /*
