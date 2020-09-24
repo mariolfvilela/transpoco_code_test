@@ -2,9 +2,10 @@ import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
-import { TranspocoController } from './controllers/transpoco-controller';
+import { TrackerController } from './controllers/tracker-controller';
 import * as database from '@src/database';
 import * as http from 'http';
+import logger from './logger';
 
 export class SetupServer extends Server {
   private server?: http.Server;
@@ -14,7 +15,7 @@ export class SetupServer extends Server {
    */
   constructor(private port = 3000) {
     super();
-    console.log('Server is running on port 3000.');
+    logger.info('Server is running on port 3000.');
   }
 
   /*
@@ -36,12 +37,12 @@ export class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-    const transpocoController = new TranspocoController();
-    this.addControllers([transpocoController]);
+    const trackerController = new TrackerController();
+    this.addControllers([trackerController]);
   }
 
   private async databaseSetup(): Promise<void> {
-    await database.connect();
+    //await database.connect();
   }
   private setupErrorHandlers(): void {
     //this.app.use(apiErrorValidator);
@@ -62,7 +63,7 @@ export class SetupServer extends Server {
   }
   public start(): void {
     this.app.listen(this.port, () => {
-      console.info('Server listening on port: ' + this.port);
+      logger.info('Server listening on port: ' + this.port);
     });
   }
   public getApp(): Application {

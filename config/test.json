@@ -1,5 +1,5 @@
 {
-    "App":{
+    "App": {
         "port": 3000,
         "database": {
             "HOST": "database-cluster.cluster-cae7t0gajtw9.eu-west-1.rds.amazonaws.com",
@@ -8,9 +8,9 @@
             "DB": "fleetwise_prd",
             "table": "tracking_202007_new"
     },
-    "logger": {
-      "enabled": true,
-      "level": "info"
+      "logger": {
+        "enabled": false
+      }
     }
-    }
-}
+  }
+  

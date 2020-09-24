@@ -1,22 +1,40 @@
 // import all interfaces
-import { IWrite } from './interfaces/IWrite';
-import { IRead } from './interfaces/IRead';
+import { IWrite } from '@src/repositories/interfaces/IWrite';
+import { IRead } from '@src/repositories/interfaces/IRead';
+import { connect } from '@src/database';
+import { InternalError } from '../util/errors/internal-error';
+import logger from '@src/logger';
 
 // that class only can be extended
 export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
-  create(item: T): Promise<boolean> {
+  async create(item: T): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
-  update(id: string, item: T): Promise<boolean> {
+  async update(id: string, item: T): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
-  delete(id: string): Promise<boolean> {
+  async delete(id: string): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
-  find(item: T): Promise<T[]> {
+  async get(): Promise<T[]> {
+    // Get users from database
+    try {
+      const conn = await connect();
+      const rows = await conn.query('SELECT * FROM tracking_202007_new');
+      logger.info(`Testando: ${rows} \n ${rows.RowDataPacket instanceof Array}`);
+      await conn.end();
+      return [];
+    } catch (error) {
+      throw new TrackerRepositoryInternalError(error.message);
+    }
+  }
+  async getById(id: number): Promise<T> {
     throw new Error('Method not implemented.');
   }
-  findOne(id: string): Promise<T> {
-    throw new Error('Method not implemented.');
+}
+
+export class TrackerRepositoryInternalError extends InternalError {
+  constructor(message: string) {
+    super(`Unexpected error repository processing: ${message}`);
   }
 }

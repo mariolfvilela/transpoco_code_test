@@ -1,4 +1,4 @@
-export interface Tracking {
+export interface Tracker {
   uid: number;
   tracker_uid: number;
   angle: number;
