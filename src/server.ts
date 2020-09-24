@@ -5,6 +5,13 @@ import bodyParser from 'body-parser';
 import { TrackerController } from '@src/controllers/tracker-controller';
 import * as http from 'http';
 import logger from '@src/logger';
+import swaggerUi from 'swagger-ui-express';
+import { OpenApiValidator } from 'express-openapi-validator';
+import { OpenAPIV3 } from 'express-openapi-validator/dist/framework/types';
+import apiSchema from './api-schema.json';
+import expressPino from 'express-pino-logger';
+import cors from 'cors';
+import { apiErrorValidator } from './middlewares/api-error-validator';
 
 export class SetupServer extends Server {
   private server?: http.Server;
@@ -23,16 +30,25 @@ export class SetupServer extends Server {
    */
   public async init(): Promise<void> {
     this.setupExpress();
+    //await this.docsSetup();
     this.setupControllers();
     await this.databaseSetup();
     //must be the last
-    this.setupErrorHandlers();
+    //this.setupErrorHandlers();
   }
 
   private setupExpress(): void {
-    // parse requests of content-type - application/json
     this.app.use(bodyParser.json());
-    this.setupControllers();
+    this.app.use(
+      expressPino({
+        logger,
+      })
+    );
+    this.app.use(
+      cors({
+        origin: '*',
+      })
+    );
   }
 
   private setupControllers(): void {
@@ -40,11 +56,20 @@ export class SetupServer extends Server {
     this.addControllers([trackerController]);
   }
 
+  private async docsSetup(): Promise<void> {
+    this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiSchema));
+    await new OpenApiValidator({
+      apiSpec: apiSchema as OpenAPIV3.Document,
+      validateRequests: true, //we do it
+      validateResponses: true,
+    }).install(this.app);
+  }
+
   private async databaseSetup(): Promise<void> {
     //await database.connect();
   }
   private setupErrorHandlers(): void {
-    //this.app.use(apiErrorValidator);
+    this.app.use(apiErrorValidator);
   }
 
   public async close(): Promise<void> {

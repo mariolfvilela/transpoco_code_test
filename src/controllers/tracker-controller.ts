@@ -23,6 +23,9 @@ export class TrackerController extends BaseController<Tracker> {
       }: {
         orderBy?: 'asc' | 'desc';
       } = req.query;
+
+      logger.info(`orderBy-> ${orderBy}`);
+
       const trackers = await this._trackerService.getAll(orderBy);
       res.status(200).send(trackers);
     } catch (error) {
