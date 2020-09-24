@@ -11,17 +11,52 @@
       }
     },
     "servers": [
+    {
+    "url": "http://localhost:3000/",
+    "description": "Local server"
+    },
       {
         "url": "http://mariolfvilela-com.umbler.net/",
         "description": "Production Server"
-      },
-      {
-        "url": "http://localhost:3000/",
-        "description": "Local server"
       }
     ],
     "paths": {
-
+        "/trackers": {
+            "get": {
+              "description": "Get the list of trackers ordered by 'asc' | 'desc'",
+              "operationId": "getAll",
+              "parameters": [
+                {
+                  "name": "orderBy",
+                  "in": "query",
+                  "required": false,
+                  "schema":{
+                    "$ref": "#/components/schemas/orderBy"
+                  }
+                },
+                {
+                  "name": "orderField",
+                  "in": "query",
+                  "required": false,
+                  "schema":{
+                    "$ref": "#/components/schemas/orderField"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "The list of trackers has been returned",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/tracker"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
     },
     "components": {
       "schemas": {
@@ -33,12 +68,9 @@
         },
         "orderField": {
           "type": "string",
-          "example": "rating",
-          "default": "rating"
-        },
-        "jwtToken": {
-          "type": "string",
-          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTdmZTQ0YzQzYWQwYjAwMThmOGQ5ZmQiLCJuYW1lIjoiV2FsZGVtYXIgTmV0byIsImVtYWlsIjoid2FsZGVtYXJudEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsUlZjWkc5d0dIVWJXcHF2TnJNR0F1SnNoWWJTR1RLSElQL3NycDlmTlkzZENFZDBJQjN6TyIsImlhdCI6MTU4NTQ0MDUxNywiZXhwIjoxNTg1NDYwNTE3fQ.JNtzLgCKGTAU9_-QjYUNxtM7X4nMU_pPIsNXDsEM-vP"
+          "example": "tracker_uid",
+          "enum": ["tracker_uid", "speed"],
+          "default": "tracker_uid"
         },
         "engine": {
             "type": "string",
@@ -116,11 +148,52 @@
             "uid": {
               "$ref": "#/components/schemas/uid"
             },
+            "tracker_uid": {
+              "$ref": "#/components/schemas/tracker_uid"
+            },
+            "angle": {
+              "$ref": "#/components/schemas/angle"
+            },
             "speed": {
               "$ref": "#/components/schemas/speed"
+            },
+            "aquisition_time": {
+              "$ref": "#/components/schemas/aquisition_time"
+            }
+            ,
+            "visible_satellites": {
+              "$ref": "#/components/schemas/visible_satellites"
+            }
+            ,
+            "engine": {
+              "$ref": "#/components/schemas/engine"
+            }
+            ,
+            "event_id": {
+              "$ref": "#/components/schemas/event_id"
+            }
+            ,
+            "event_info": {
+              "$ref": "#/components/schemas/event_info"
+            },
+            "insert_time": {
+              "$ref": "#/components/schemas/insert_time"
+            },
+            "mileage": {
+              "$ref": "#/components/schemas/mileage"
+            }
+            ,
+            "voltage": {
+              "$ref": "#/components/schemas/voltage"
+            },
+            "driver_ibutton": {
+              "$ref": "#/components/schemas/driver_ibutton"
+            },
+            "hdop": {
+              "$ref": "#/components/schemas/hdop"
             }
           },
-          "required": ["uid", "speed"]
+          "required": ["uid", "speed","hdop", "driver_ibutton"]
         },
         "TrackerResponse": {
           "type": "object",
@@ -197,5 +270,3 @@
       }
     }
   }
-  
-  
