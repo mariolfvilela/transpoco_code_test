@@ -16,7 +16,7 @@ export abstract class BaseRepository<T> implements IWrite<T>, IRead<T> {
   async update(id: string, item: T): Promise<boolean> {
     throw new Error('Method not implemented.');
   }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   async delete(id: string): Promise<boolean> {
     throw new Error('Method not implemented.');
   }

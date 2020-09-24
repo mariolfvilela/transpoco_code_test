@@ -1,0 +1,201 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+      "version": "1.3.0",
+      "title": "Transpoco code test",
+      "description": "Software Developer code test",
+      "termsOfService": "http://api_url/terms/",
+      "license": {
+        "name": "Apache 2.0",
+        "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+    },
+    "servers": [
+      {
+        "url": "http://mariolfvilela-com.umbler.net/",
+        "description": "Production Server"
+      },
+      {
+        "url": "http://localhost:3000/",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+
+    },
+    "components": {
+      "schemas": {
+        "orderBy": {
+          "type": "string",
+          "example": "desc",
+          "enum": ["asc", "desc"],
+          "default": "desc"
+        },
+        "orderField": {
+          "type": "string",
+          "example": "rating",
+          "default": "rating"
+        },
+        "jwtToken": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTdmZTQ0YzQzYWQwYjAwMThmOGQ5ZmQiLCJuYW1lIjoiV2FsZGVtYXIgTmV0byIsImVtYWlsIjoid2FsZGVtYXJudEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRsUlZjWkc5d0dIVWJXcHF2TnJNR0F1SnNoWWJTR1RLSElQL3NycDlmTlkzZENFZDBJQjN6TyIsImlhdCI6MTU4NTQ0MDUxNywiZXhwIjoxNTg1NDYwNTE3fQ.JNtzLgCKGTAU9_-QjYUNxtM7X4nMU_pPIsNXDsEM-vP"
+        },
+        "engine": {
+            "type": "string",
+            "example": "engine"
+          },
+          "mileage": {
+            "type": "string",
+            "example": "mileage"
+          },
+          "event_id": {
+            "type": "number",
+            "example": 11
+          },
+          "event_info": {
+            "type": "number",
+            "example": 11
+          },
+          "insert_time": {
+            "type": "string",
+            "format": "date",
+            "example": "2020-07-01 02:43:32"
+          },
+        "uid": {
+          "type": "number",
+          "example": 10
+        },
+        "hdop": {
+          "type": "number",
+          "example": 11
+        },
+        "driver_ibutton": {
+          "type": "number",
+          "example": 12
+        },
+        "voltage": {
+          "type": "number",
+          "example": 32
+        },
+        "tracker_uid": {
+          "type": "number",
+          "example": 10.55
+        },
+        "angle": {
+          "type": "number",
+          "example": 10.55
+        },
+        "visible_satellites": {
+            "type": "number",
+            "example": 15
+          },
+        "speed":{
+          "type": "number",
+          "example": 3
+        },
+        "aquisition_time":{
+            "type": "number",
+            "example": 54
+          },
+        "forecastPropertyKey": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "example": "noa"
+            },
+            "value": {
+              "type": "number",
+              "example": "10.1"
+            }
+          }
+        },
+        "tracker": {
+          "type": "object",
+          "properties": {
+            "uid": {
+              "$ref": "#/components/schemas/uid"
+            },
+            "speed": {
+              "$ref": "#/components/schemas/speed"
+            }
+          },
+          "required": ["uid", "speed"]
+        },
+        "TrackerResponse": {
+          "type": "object",
+          "properties": {
+            "uid": {
+              "$ref": "#/components/schemas/uid"
+            },
+            "tracker_uid": {
+              "$ref": "#/components/schemas/tracker_uid"
+            },
+            "angle": {
+              "$ref": "#/components/schemas/angle"
+            },
+            "speed": {
+              "$ref": "#/components/schemas/speed"
+            },
+            "aquisition_time": {
+              "$ref": "#/components/schemas/aquisition_time"
+            }
+            ,
+            "visible_satellites": {
+              "$ref": "#/components/schemas/visible_satellites"
+            }
+            ,
+            "engine": {
+              "$ref": "#/components/schemas/engine"
+            }
+            ,
+            "event_id": {
+              "$ref": "#/components/schemas/event_id"
+            }
+            ,
+            "event_info": {
+              "$ref": "#/components/schemas/event_info"
+            },
+            "insert_time": {
+              "$ref": "#/components/schemas/insert_time"
+            },
+            "mileage": {
+              "$ref": "#/components/schemas/mileage"
+            }
+            ,
+            "voltage": {
+              "$ref": "#/components/schemas/voltage"
+            },
+            "driver_ibutton": {
+              "$ref": "#/components/schemas/driver_ibutton"
+            },
+            "hdop": {
+              "$ref": "#/components/schemas/hdop"
+            }
+          }
+        },
+        "Error": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            },
+            "code": {
+              "type": "number"
+            },
+            "error": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "documentation": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  
