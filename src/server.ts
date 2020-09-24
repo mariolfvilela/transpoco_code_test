@@ -2,10 +2,9 @@ import './util/module-alias';
 import { Server } from '@overnightjs/core';
 import { Application } from 'express';
 import bodyParser from 'body-parser';
-import { TrackerController } from './controllers/tracker-controller';
-import * as database from '@src/database';
+import { TrackerController } from '@src/controllers/tracker-controller';
 import * as http from 'http';
-import logger from './logger';
+import logger from '@src/logger';
 
 export class SetupServer extends Server {
   private server?: http.Server;

@@ -1,4 +1,7 @@
-export interface Tracker {
+//import { RowDataPacket, OkPacket } from 'mysql2';
+import { OkPacket } from 'mysql2';
+
+export interface Tracker extends OkPacket {
   uid: number;
   tracker_uid: number;
   angle: number;

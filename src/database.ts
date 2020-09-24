@@ -1,5 +1,5 @@
 import config, { IConfig } from 'config';
-import { createPool, Pool } from 'mysql';
+import { createPool, Pool } from 'mysql2/promise';
 
 const dbConfig: IConfig = config.get('App.database');
 

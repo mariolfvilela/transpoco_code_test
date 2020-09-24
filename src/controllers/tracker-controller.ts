@@ -13,17 +13,38 @@ export class TrackerController extends BaseController<Tracker> {
   }
 
   @Get('')
-  public async getTracker(req: Request, res: Response): Promise<void> {
+  public async getAll(
+    req: Request,
+    res: Response
+  ): Promise<Response<Tracker[]> | void> {
     try {
       const {
         orderBy,
-        orderField,
       }: {
         orderBy?: 'asc' | 'desc';
-        orderField?: keyof Tracker;
       } = req.query;
       const trackers = await this._trackerService.getAll(orderBy);
       res.status(200).send(trackers);
+    } catch (error) {
+      logger.error(error);
+      this.sendErrorResponse(res, {
+        code: 500,
+        message: 'Something went wrong',
+      });
+    }
+  }
+
+  @Get(':tracker_uid')
+  public async getByTrackerUid(
+    req: Request,
+    res: Response
+  ): Promise<Response<Tracker[]> | void> {
+    try {
+      //const {initDate,endDate}: {initDate?:keyof Date; endDate?: keyof Date;} = req.query;
+      const tracker_uid = Number(req.params.tracker_uid) | 0;
+      res
+        .status(200)
+        .send(await this._trackerService.getByTrackerUid(tracker_uid));
     } catch (error) {
       logger.error(error);
       this.sendErrorResponse(res, {

@@ -1,24 +1,28 @@
-import { Get } from '@overnightjs/core';
 import { Tracker } from '@src/models/tracker';
 import { InternalError } from '@src/util/errors/internal-error';
-import { TrackerRepository } from '../repositories/tracker-repository';
+import { TrackerRepository } from '@src/repositories/tracker-repository';
 
 export class TrackerService {
   private readonly _trackerRepository = new TrackerRepository();
-  public async getAll(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    orderBy: 'asc' | 'desc' = 'desc'
-  ): Promise<Tracker[]> {
+
+  async getAll(orderBy: 'asc' | 'desc' = 'desc'): Promise<Tracker[]> {
     try {
-      await this._trackerRepository.get();
-      return [];
+      return await this._trackerRepository.getAll(orderBy);
     } catch (error) {
-      throw new TrackerProcessingInternalError(error.message);
+      throw new TrackerServiceInternalError(error.message);
+    }
+  }
+
+  async getByTrackerUid(tracker_uid: number): Promise<Tracker[]> {
+    try {
+      return await this._trackerRepository.getByTrackerUid(tracker_uid);
+    } catch (error) {
+      throw new TrackerServiceInternalError(error.message);
     }
   }
 }
 
-export class TrackerProcessingInternalError extends InternalError {
+export class TrackerServiceInternalError extends InternalError {
   constructor(message: string) {
     super(`Unexpected error during the tracking processing: ${message}`);
   }

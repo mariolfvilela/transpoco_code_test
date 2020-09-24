@@ -6,7 +6,7 @@
             "USER": "testuser",
             "PASSWORD": "jkwp457r#YD2NKk6F!L!",
             "DB": "fleetwise_prd",
-            "table": "tracking_202007_new"
+            "TABLE": "tracking_202007_new"
     },
     "logger": {
       "enabled": true,
