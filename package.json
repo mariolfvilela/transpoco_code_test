@@ -6,12 +6,12 @@
   "scripts": {
     "build": "tsc",
     "start": "yarn build && node dist/src/index.js",
-    "start:dev": "ts-node-dev 'src/index.ts' | pino-pretty -c",
+    "start:local": "dotenv -e .env -- ts-node-dev --transpile-only src/index.ts | pino-pretty -c",
     "test": "yarn lint && yarn style:check && yarn test:unit && yarn test:functional",
-    "test:functional": "jest --projects ./test --forceExit --runInBand",
-    "test:unit": "jest",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
+    "test:functional": "dotenv -e .env -- jest --projects ./test --runInBand",
+    "test:unit": "dotenv -e .env -- jest",
     "style:check": "prettier --check 'src/**/*.ts' 'test/**/*.ts'",
     "style:fix": "prettier --write 'src/**/*.ts' 'test/**/*.ts'"
   },
@@ -62,6 +62,7 @@
     "body-parser": "^1.19.0",
     "config": "^3.3.1",
     "cors": "^2.8.5",
+    "dotenv-cli": "^4.0.0",
     "express": "^4.17.1",
     "express-openapi-validator": "^3.17.2",
     "express-pino-logger": "^5.0.0",

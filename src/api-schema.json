@@ -129,19 +129,6 @@
             "type": "number",
             "example": 54
           },
-        "forecastPropertyKey": {
-          "type": "object",
-          "properties": {
-            "source": {
-              "type": "string",
-              "example": "noa"
-            },
-            "value": {
-              "type": "number",
-              "example": "10.1"
-            }
-          }
-        },
         "tracker": {
           "type": "object",
           "properties": {
@@ -193,7 +180,7 @@
               "$ref": "#/components/schemas/hdop"
             }
           },
-          "required": ["uid", "speed","hdop", "driver_ibutton"]
+          "required": ["angle", "tracker_uid", "aquisition_time", "visible_satellites","engine","uid", "speed","hdop", "driver_ibutton", "voltage", "mileage", "insert_time", "event_info", "event_id"]
         },
         "TrackerResponse": {
           "type": "object",

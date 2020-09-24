@@ -11,6 +11,7 @@ import { OpenAPIV3 } from 'express-openapi-validator/dist/framework/types';
 import apiSchema from './api-schema.json';
 import expressPino from 'express-pino-logger';
 import cors from 'cors';
+import { apiErrorValidator } from './middlewares/api-error-validator';
 
 export class SetupServer extends Server {
   private server?: http.Server;
@@ -29,11 +30,11 @@ export class SetupServer extends Server {
    */
   public async init(): Promise<void> {
     this.setupExpress();
-    await this.docsSetup();
+    //await this.docsSetup();
     this.setupControllers();
     await this.databaseSetup();
     //must be the last
-    this.setupErrorHandlers();
+    //this.setupErrorHandlers();
   }
 
   private setupExpress(): void {
@@ -68,7 +69,7 @@ export class SetupServer extends Server {
     //await database.connect();
   }
   private setupErrorHandlers(): void {
-    //this.app.use(apiErrorValidator);
+    this.app.use(apiErrorValidator);
   }
 
   public async close(): Promise<void> {
