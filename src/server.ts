@@ -37,10 +37,10 @@ export class SetupServer extends Server {
     this.setupErrorHandlers();
   }
 
-  private setupExpress(): void {    
+  private setupExpress(): void {
     this.app.use(bodyParser.json());
-    this.app.use(expressPino({logger,}));
-    this.app.use(cors({origin: '*',}));
+    this.app.use(expressPino({ logger }));
+    this.app.use(cors({ origin: '*' }));
   }
 
   private setupControllers(): void {

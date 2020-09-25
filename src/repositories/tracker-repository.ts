@@ -16,9 +16,7 @@ export class TrackerRepository extends BaseRepository<Tracker> {
       // https://stackoverflow.com/questions/54583950/using-typescript-how-do-i-strongly-type-mysql-query-results
       // const[rows]: [Tracker[], FieldPacket[]]
       const [rows] = await conn.query<Tracker[]>(
-        `SELECT * FROM ${this.dbConfig.get(
-          'TABLE'
-        )} 
+        `SELECT * FROM ${this.dbConfig.get('TABLE')} 
         WHERE speed IS NOT NULL OR speed != '' and tracker_uid IS NOT NULL OR tracker_uid != ''
         ORDER BY speed, tracker_uid ${orderBy ?? 'asc'} LIMIT 10;`,
         []
