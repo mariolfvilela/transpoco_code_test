@@ -46,23 +46,23 @@ jobs:
     - name: Run all tests
       run: yarn test
 
-    - shell: bash
-      if: github.ref == 'refs/heads/master'
-      name: Create SSH deployment key
-      env:
-        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      run: ./scripts/deploy.sh
-
-    - name: Deployment to Umbler
-      if: github.ref == 'refs/heads/master'
-      run: git remote add umbler ssh://git@geonosis.deploy.umbler.com:9922/j37py27k/transpoco-code-test-com.git && git push umbler master
-      env:
-        CI: true
-        
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+    - shell: bash
+      if: github.ref == 'refs/heads/master'
+      name: Create SSH deployment key
+      env:
+        SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+#      run: ./scripts/deploy.sh
+
+    - name: Deployment to Umbler
+      if: github.ref == 'refs/heads/master'
+#     run: git remote add umbler ssh://git@geonosis.deploy.umbler.com:9922/j37py27k/transpoco-code-test-com.git && git push umbler master
+#      env:
+#       CI: true
 
