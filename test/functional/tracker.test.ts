@@ -1,4 +1,4 @@
-import apiTrackersResponse1TrackerFixture from '@test/fixtures/apiTrackersResponse1TrackerFixture.json';
+//import apiTrackersResponse1TrackerFixture from '@test/fixtures/apiTrackersResponse1TrackerFixture.json';
 
 describe('Tracker functional tests', async () => {
   it('should return a dataset with just a few times', async () => {
