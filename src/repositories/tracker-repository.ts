@@ -18,7 +18,9 @@ export class TrackerRepository extends BaseRepository<Tracker> {
       const [rows] = await conn.query<Tracker[]>(
         `SELECT * FROM ${this.dbConfig.get(
           'TABLE'
-        )} ORDER BY speed, tracker_uid ${orderBy}`,
+        )} 
+        WHERE speed IS NOT NULL OR speed != '' and tracker_uid IS NOT NULL OR tracker_uid != ''
+        ORDER BY speed, tracker_uid ${orderBy ?? 'asc'} LIMIT 10;`,
         []
       );
       await conn.end();

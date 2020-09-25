@@ -61,7 +61,7 @@ Run the [Jest](https://jestjs.io/) <br />
 ---
 ### Testing routes
 
-- GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API should be able to return the rank ascendant or descendant. `/trackers?orderBy='desc'`, `/trackers?orderBy='asc'`
+- GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API should be able to return the rank ascendant or descendant. `/trackers?orderBy=desc`, `/trackers?orderBy=asc`
 - GET `/trackers/1101`. [`/trackers`](http://localhost:3000/trackers/1101) - Return all events filtered by tracker_uid
 - GET `/docs`. [`/docs`](http://localhost:3000/docs) - ´´´´Deprecated´´´´ Documentation under construction. Note: under construction
 
