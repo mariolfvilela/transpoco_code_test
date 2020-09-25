@@ -1,5 +1,5 @@
 {
-    "App":{
+    "App": {
         "port": "APP_PORT",
         "database": {
             "HOST": "DB_HOST",
@@ -7,9 +7,6 @@
             "PASSWORD": "DB_PASSWORD",
             "DB": "DB_DB",
             "TABLE": "DB_TABLE"
-    },
-    "logger": {
-      "enabled": false
-    }
+        }
     }
 }
