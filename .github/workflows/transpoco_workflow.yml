@@ -16,9 +16,10 @@ name: workflow Transpoco code test
 
 on: ['push', 'pull_request']
 
-AZURE_WEBAPP_NAME: transpoco    # set this to your application's name
-AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-NODE_VERSION: '12.x'                # set this to the node version to use
+env:
+  AZURE_WEBAPP_NAME: transpoco    # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  NODE_VERSION: '12.x'                # set this to the node version to use
 
 jobs:
 
