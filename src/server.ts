@@ -30,7 +30,7 @@ export class SetupServer extends Server {
    */
   public async init(): Promise<void> {
     this.setupExpress();
-    //await this.docsSetup();
+    await this.docsSetup();
     this.setupControllers();
     await this.databaseSetup();
     //must be the last
