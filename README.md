@@ -63,7 +63,7 @@ Run the [Jest](https://jestjs.io/) <br />
 
 - GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API should be able to return the rank ascendant or descendant. `/trackers?orderBy='desc'`, `/trackers?orderBy='asc'`
 - GET `/trackers/1101`. [`/trackers`](http://localhost:3000/trackers/1101) - Return all events filtered by tracker_uid
-- GET `/docs`. [`/trackers`](http://localhost:3000/docs) - ´´´´Deprecated´´´´ Documentation under construction. Note: under construction
+- GET `/docs`. [`/docs`](http://localhost:3000/docs) - ´´´´Deprecated´´´´ Documentation under construction. Note: under construction
 
 ---
 
@@ -71,4 +71,5 @@ Run the [Jest](https://jestjs.io/) <br />
 
 ---
 
-🔗[Click here to see the service.](https://transpoco.azurewebsites.net/trackers)
+🔗[Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers)
+🔗[Click here to see the service - Umbler](http://transpoco-code-test-com.umbler.net/) ´´´´Deprecated´´´´ Note: Internal problems in ssh key publishing
