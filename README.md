@@ -71,5 +71,6 @@ Run the [Jest](https://jestjs.io/) <br />
 
 ---
 
-🔗[Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers)
-🔗[Click here to see the service - Umbler](http://transpoco-code-test-com.umbler.net/) ´´´´Deprecated´´´´ Note: Internal problems in ssh key publishing
+- 🔗[Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers)
+
+- 🔗[Click here to see the service - Umbler](http://transpoco-code-test-com.umbler.net/) ´´´´Deprecated´´´´ Note: Internal problems in ssh key publishing
