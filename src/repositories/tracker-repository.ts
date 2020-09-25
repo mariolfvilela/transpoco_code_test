@@ -18,7 +18,7 @@ export class TrackerRepository extends BaseRepository<Tracker> {
       const [rows] = await conn.query<Tracker[]>(
         `SELECT * FROM ${this.dbConfig.get('TABLE')} 
         WHERE speed IS NOT NULL OR speed != '' and tracker_uid IS NOT NULL OR tracker_uid != ''
-        ORDER BY speed, tracker_uid ${orderBy ?? 'asc'} LIMIT 10;`,
+        ORDER BY speed, tracker_uid ${orderBy ?? 'asc'} LIMIT 100;`,
         []
       );
       await conn.end();
@@ -35,7 +35,8 @@ export class TrackerRepository extends BaseRepository<Tracker> {
       const [rows] = await conn.query<Tracker[]>(
         `SELECT * FROM ${this.dbConfig.get(
           'TABLE'
-        )} WHERE tracker_uid = ${tracker_uid} `,
+        )} WHERE tracker_uid = ${tracker_uid} 
+        AND speed IS NOT NULL OR speed != '' LIMIT 100`,
         []
         //AND insert_time BETWEEN ${initDate} AND ${endDate}  `,[]
       );
