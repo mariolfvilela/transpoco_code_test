@@ -24,6 +24,8 @@ Main technologies used in the code.
 
 🛠 [Github Actions](https://github.com/features/actions)
 
+[Swagger Editor](http://editor.swagger.io/) ´´´´Deprecated´´´´
+
 ## How to run the project:
 
 1. In the file `src/config.js`
@@ -55,6 +57,15 @@ Run the [PRETTIER](https://prettier.io/) <br />
 ### `yarn test`
 
 Run the [Jest](https://jestjs.io/) <br />
+
+---
+### Testing routes
+
+- GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API should be able to return the rank ascendant or descendant. `/trackers?orderBy='desc'`, `/trackers?orderBy='asc'`
+- GET `/trackers/1101`. [`/trackers`](http://localhost:3000/trackers/1101) - Return all events filtered by tracker_uid
+- GET `/docs`. [`/trackers`](http://localhost:3000/docs) - ´´´´Deprecated´´´´ Documentation under construction. Note: under construction
+
+---
 
 ## How to run the web page
 
