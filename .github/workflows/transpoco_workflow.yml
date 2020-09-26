@@ -63,6 +63,6 @@ jobs:
     - name: Deployment to Umbler
       if: github.ref == 'refs/heads/master'
       run: git remote add umbler ssh://git@geonosis.deploy.umbler.com:9922/j37py27k/transpoco-code-test-com.git && git push umbler master
-        env:
+      env:
         CI: true
 
