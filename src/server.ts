@@ -4,7 +4,7 @@ import { Application } from 'express';
 import bodyParser from 'body-parser';
 import { TrackerController } from '@src/controllers/tracker-controller';
 import * as http from 'http';
-import logger from '@src/logger';
+import logger from './logger';
 import swaggerUi from 'swagger-ui-express';
 import { OpenApiValidator } from 'express-openapi-validator';
 import { OpenAPIV3 } from 'express-openapi-validator/dist/framework/types';
@@ -30,7 +30,7 @@ export class SetupServer extends Server {
    */
   public async init(): Promise<void> {
     this.setupExpress();
-    //await this.docsSetup();
+    await this.docsSetup();
     this.setupControllers();
     await this.databaseSetup();
     //must be the last
@@ -39,6 +39,7 @@ export class SetupServer extends Server {
 
   private setupExpress(): void {
     this.app.use(bodyParser.json());
+    this.setupControllers();
     this.app.use(expressPino({ logger }));
     this.app.use(cors({ origin: '*' }));
   }
