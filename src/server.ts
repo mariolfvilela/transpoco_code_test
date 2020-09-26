@@ -49,7 +49,7 @@ export class SetupServer extends Server {
   }
 
   private async docsSetup(): Promise<void> {
-    this.app.use('/docs', swaggerUi.serve, swaggerUi.setup(apiSchema));
+    this.app.use('', swaggerUi.serve, swaggerUi.setup(apiSchema));
     await new OpenApiValidator({
       apiSpec: apiSchema as OpenAPIV3.Document,
       validateRequests: true, //we do it

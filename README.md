@@ -61,9 +61,9 @@ Run the [Jest](https://jestjs.io/) <br />
 ---
 ### Testing routes
 
+- GET `/`. [`/`](http://localhost:3000/docs) - ´´´´under construction´´´´ Documentation under construction.
 - GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API should be able to return the rank ascendant or descendant. `/trackers?orderBy=desc`, `/trackers?orderBy=asc`
 - GET `/trackers/1101`. [`/trackers`](http://localhost:3000/trackers/1101) - Return all events filtered by tracker_uid
-- GET `/docs`. [`/docs`](http://localhost:3000/docs) - ´´´´under construction´´´´ Documentation under construction. Note: under construction
 
 ---
 
@@ -71,6 +71,6 @@ Run the [Jest](https://jestjs.io/) <br />
 
 ---
 
-- 🔗[Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers)
+- 🔗[Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers) ´´´´under construction´´´´
 
-- 🔗[Click here to see the service - Umbler](http://transpoco-code-test-com.umbler.net/) ´´´´under construction´´´´ Note: Internal problems in ssh key publishing
+- 🔗[Click here to see the service - Umbler](http://transpoco-code-test-com.umbler.net/)
