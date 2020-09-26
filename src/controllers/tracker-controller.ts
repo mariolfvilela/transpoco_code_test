@@ -16,7 +16,7 @@ export class TrackerController extends BaseController<Tracker> {
   public async getAll(
     req: Request,
     res: Response
-  ): Promise<Response<Tracker[]> | void> {
+  ): Promise<void> {
     try {
       const {
         orderBy,
