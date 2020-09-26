@@ -22,7 +22,7 @@ Main technologies used in the code.
 
 📦 [MySql](https://www.npmjs.com/package/mysql2)
 
-🛠 [Github Actions](https://github.com/features/actions)
+🛠 [Github Actions](https://github.com/features/actions) `CI-CD` [Umbler](http://transpoco-code-test-com.umbler.net/)  - [Azure](https://transpoco.azurewebsites.net/trackers) 
 
 📝 [Swagger Editor](http://editor.swagger.io/)
 
