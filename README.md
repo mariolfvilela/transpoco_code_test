@@ -24,7 +24,7 @@ Main technologies used in the code.
 
 🛠 [Github Actions](https://github.com/features/actions)
 
-[Swagger Editor](http://editor.swagger.io/) ´´´´Deprecated´´´´
+📝 [Swagger Editor](http://editor.swagger.io/) ´´´´under construction´´´´
 
 ## How to run the project:
 
