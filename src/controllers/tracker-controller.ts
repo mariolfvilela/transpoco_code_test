@@ -17,10 +17,21 @@ export class TrackerController extends BaseController<Tracker> {
     try {
       const {
         orderBy,
+        orderField,
+        start_date,
+        end_date,
       }: {
-        orderBy?: 'asc' | 'desc';
+        orderBy?: 'ASC' | 'DESC';
+        orderField?: string;
+        start_date?: Date;
+        end_date?: Date;
       } = req.query;
-      const trackers = await this._trackerService.getAll(orderBy);
+      const trackers = await this._trackerService.getAll(
+        orderBy,
+        orderField,
+        start_date,
+        end_date
+      );
       res.status(200).send(trackers);
     } catch (error) {
       logger.error(error);
@@ -37,11 +48,30 @@ export class TrackerController extends BaseController<Tracker> {
     res: Response
   ): Promise<Response<Tracker[]> | void> {
     try {
-      //const {initDate,endDate}: {initDate?:keyof Date; endDate?: keyof Date;} = req.query;
       const tracker_uid = Number(req.params.tracker_uid) | 0;
-      res
-        .status(200)
-        .send(await this._trackerService.getByTrackerUid(tracker_uid));
+      const {
+        start_date,
+        end_date,
+      }: {
+        start_date?: Date;
+        end_date?: Date;
+      } = req.query;
+
+      if (Math.sign(tracker_uid) < 1)
+        this.sendErrorResponse(res, {
+          code: 500,
+          message: 'Tracker_uid must be a positive value',
+        });
+      else
+        res
+          .status(200)
+          .send(
+            await this._trackerService.getByTrackerUid(
+              tracker_uid,
+              start_date,
+              end_date
+            )
+          );
     } catch (error) {
       logger.error(error);
       this.sendErrorResponse(res, {

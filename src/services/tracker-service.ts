@@ -5,17 +5,35 @@ import { TrackerRepository } from '@src/repositories/tracker-repository';
 export class TrackerService {
   private readonly _trackerRepository = new TrackerRepository();
 
-  async getAll(orderBy: 'asc' | 'desc' = 'desc'): Promise<Tracker[]> {
+  async getAll(
+    orderBy: 'ASC' | 'DESC' = 'ASC',
+    orderField?: string,
+    start_date?: Date,
+    end_date?: Date
+  ): Promise<Tracker[]> {
     try {
-      return await this._trackerRepository.getAll(orderBy);
+      return await this._trackerRepository.getAll(
+        orderBy,
+        orderField,
+        start_date,
+        end_date
+      );
     } catch (error) {
       throw new TrackerServiceInternalError(error.message);
     }
   }
 
-  async getByTrackerUid(tracker_uid: number): Promise<Tracker[]> {
+  async getByTrackerUid(
+    tracker_uid: number,
+    start_date?: Date,
+    end_date?: Date
+  ): Promise<Tracker[]> {
     try {
-      return await this._trackerRepository.getByTrackerUid(tracker_uid);
+      return await this._trackerRepository.getByTrackerUid(
+        tracker_uid,
+        start_date,
+        end_date
+      );
     } catch (error) {
       throw new TrackerServiceInternalError(error.message);
     }

@@ -16,7 +16,7 @@
   "description": "Local server"
   },
     {
-      "url": "http://mariolfvilela-com.umbler.net/",
+      "url": "http://transpoco-code-test-com.umbler.net/",
       "description": "Production Server"
     }
   ],
@@ -63,6 +63,23 @@
             "responses": {
               "200": {
                 "description": "The list of trackers has been returned",
+                "headers": {
+                  "Access-Control-Allow-Origin": {
+                    "schema": {
+                      "type": "string"
+                    }
+                  },
+                  "Access-Control-Allow-Methods": {
+                    "schema": {
+                      "type": "string"
+                    }
+                  },
+                  "Access-Control-Allow-Headers": {
+                    "schema": {
+                      "type": "string"
+                    }
+                  }
+                },
                 "content": {
                   "application/json": {
                     "schema": {
@@ -185,13 +202,13 @@
       "start_date":{
         "type": "string",
         "format": "date",
-        "example": "2016-11-20",
+        "example": "2020-07-20",
         "description": "The start date for the report. Must be used together with `end_date`. This parameter is incompatible with `rdate`."
       },
       "end_date":{
         "type": "string",
         "format": "date",
-        "example": "2016-11-15",
+        "example": "2019-01-15",
         "description": "The end date for the report. Must be used together with `start_date`. This parameter is incompatible with `rdate`."
       },
       "idTrackerUid": {
@@ -201,15 +218,15 @@
       },
       "orderBy": {
         "type": "string",
-        "example": "desc",
-        "enum": ["asc", "desc"],
-        "default": "desc"
+        "example": "DESC",
+        "enum": ["ASC", "DESC"],
+        "default": "DESC"
       },
       "orderField": {
         "type": "string",
-        "example": "tracker_uid",
+        "example": "speed",
         "enum": ["tracker_uid", "speed"],
-        "default": "tracker_uid"
+        "default": "speed"
       },
       "engine": {
           "type": "string",
