@@ -1,5 +1,4 @@
 import { Tracker } from '@src/models/tracker';
-import { InternalError } from '@src/util/errors/internal-error';
 import { TrackerRepository } from '@src/repositories/tracker-repository';
 import { BaseService, TrackerServiceInternalError } from './base-service';
 
