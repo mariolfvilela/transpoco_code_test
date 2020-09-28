@@ -1,3 +1,4 @@
+import { Util } from '@src/util/util';
 import {
   BaseRepository,
   TrackerRepositoryInternalError,
@@ -5,7 +6,6 @@ import {
 import { Tracker } from '@src/models/tracker';
 import { connect } from '@src/database';
 import config, { IConfig } from 'config';
-import logger from '@src/logger';
 import moment from 'moment';
 
 export class TrackerRepository extends BaseRepository<Tracker> {
@@ -19,7 +19,7 @@ export class TrackerRepository extends BaseRepository<Tracker> {
   ): Promise<Tracker[]> {
     // Get users from database
     try {
-      const validatedDates = this.validateDate(start_date, end_date);
+      const validatedDates = Util.validateDate(start_date, end_date);
       const conn = await connect();
       const query = `SELECT DISTINCT tracker_uid, speed
       ${
@@ -64,7 +64,7 @@ export class TrackerRepository extends BaseRepository<Tracker> {
       , DATE_FORMAT(insert_time,'%d/%m/%Y') AS insert_time FROM 
       ${this.dbConfig.get('TABLE')} WHERE (tracker_uid = ${tracker_uid} ) 
       ${
-        this.validateDate(start_date, end_date)
+        Util.validateDate(start_date, end_date)
           ? 'AND (insert_time BETWEEN FROM_UNIXTIME(' +
             moment(end_date).unix() +
             ') AND FROM_UNIXTIME(' +
@@ -83,37 +83,5 @@ export class TrackerRepository extends BaseRepository<Tracker> {
     } catch (error) {
       throw new TrackerRepositoryInternalError(error.message);
     }
-  }
-
-  /**
-   * Compares two Date objects
-   * @param date1 First date object to compare.
-   * @param date2 Second date object to compare.
-   */
-  private validateDate(start?: Date, end?: Date): boolean {
-    if (!start || !end) {
-      // throw new TrackerRepositoryInternalError('Non-standard dates');
-      return false;
-    }
-
-    // With Date object we can compare dates them using the >, <, <= or >=.
-    // The ==, !=, ===, and !== operators require to use date.getTime(),
-    // so we need to create a new instance of Date with 'new Date()'
-    const d1 = new Date(start);
-    const d2 = new Date(end);
-
-    // Check if the dates are equal
-    if (d1.getTime() === d2.getTime()) {
-      //throw new TrackerRepositoryInternalError('Same dates');
-      return false;
-    }
-
-    // Check if the first is less than second
-    if (d1 < d2) {
-      //throw new TrackerRepositoryInternalError('End date greater than the start date');
-      return false;
-    }
-
-    return true;
   }
 }

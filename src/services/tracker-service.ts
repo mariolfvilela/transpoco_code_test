@@ -1,8 +1,9 @@
 import { Tracker } from '@src/models/tracker';
 import { InternalError } from '@src/util/errors/internal-error';
 import { TrackerRepository } from '@src/repositories/tracker-repository';
+import { BaseService, TrackerServiceInternalError } from './base-service';
 
-export class TrackerService {
+export class TrackerService extends BaseService<Tracker> {
   private readonly _trackerRepository = new TrackerRepository();
 
   async getAll(
@@ -37,11 +38,5 @@ export class TrackerService {
     } catch (error) {
       throw new TrackerServiceInternalError(error.message);
     }
-  }
-}
-
-export class TrackerServiceInternalError extends InternalError {
-  constructor(message: string) {
-    super(`Unexpected error during the tracking processing: ${message}`);
   }
 }
