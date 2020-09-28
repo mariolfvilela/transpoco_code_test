@@ -1,18 +1,6 @@
 [
   {
-     "uid":74191631,
-     "tracker_uid":62604,
-     "angle":0,
-     "speed":0,
-     "aquisition_time":1594575420,
-     "visible_satellites":40,
-     "engine":"off",
-     "event_id":1,
-     "event_info":0,
-     "insert_time":"2020-07-12T20:42:54.000Z",
-     "mileage":0,
-     "voltage":0,
-     "driver_ibutton":null,
-     "hdop":0
+    "tracker_uid": 46402,
+    "speed": 147
   }
 ]
