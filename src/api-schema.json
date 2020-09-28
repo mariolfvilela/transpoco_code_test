@@ -11,14 +11,14 @@
     }
   },
   "servers": [
+    {
+      "url": "https://transpoco-code-test-com.umbler.net/",
+      "description": "Production Server"
+    },
   {
   "url": "http://localhost:3000/",
   "description": "Local server"
-  },
-    {
-      "url": "http://transpoco-code-test-com.umbler.net/",
-      "description": "Production Server"
-    }
+  }
   ],
   "paths": {
       "/trackers": {
