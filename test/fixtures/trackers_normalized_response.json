@@ -1,0 +1,18 @@
+[
+  {
+    "uid":162778,
+    "tracker_uid":1101,
+    "angle":0,
+    "speed":0,
+    "aquisition_time":1593571293,
+    "visible_satellites":0,
+    "engine":"off",
+    "event_id":7,
+    "event_info":0,
+    "insert_time":"01/07/2020",
+    "mileage":248114.161,
+    "voltage":12.3,
+    "driver_ibutton":"0",
+    "hdop":0
+  }
+]

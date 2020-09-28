@@ -12,8 +12,8 @@ export interface Tracker extends OkPacket {
   event_id: number;
   event_info: number;
   insert_time: Date;
-  mileage: string;
+  mileage: number;
   voltage: number;
-  driver_ibutton: number;
+  driver_ibutton?: string;
   hdop: number;
 }
