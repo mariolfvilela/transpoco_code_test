@@ -4,7 +4,7 @@ export class Util {
    * @param date1 First date object to compare.
    * @param date2 Second date object to compare.
    */
-  public static validateDate(start?: Date, end?: Date): boolean {
+  public static isValidateDate(start?: Date, end?: Date): boolean {
     if (!start || !end) {
       // throw new TrackerRepositoryInternalError('Non-standard dates');
       return false;

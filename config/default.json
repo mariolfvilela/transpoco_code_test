@@ -1,16 +1,17 @@
 {
     "App":{
-        "port": 3000,
-        "database": {
-            "HOST": "database-cluster.cluster-cae7t0gajtw9.eu-west-1.rds.amazonaws.com",
-            "USER": "testuser",
-            "PASSWORD": "jkwp457r#YD2NKk6F!L!",
-            "DB": "fleetwise_prd",
-            "TABLE": "tracking_202007_new"
-    },
-    "logger": {
-      "enabled": true,
-      "level": "info"
-    }
+      "port": 3000,
+      "cacheTtl": 3600,
+      "database": {
+          "HOST": "database-cluster.cluster-cae7t0gajtw9.eu-west-1.rds.amazonaws.com",
+          "USER": "testuser",
+          "PASSWORD": "jkwp457r#YD2NKk6F!L!",
+          "DB": "fleetwise_prd",
+          "TABLE": "tracking_202007_new"
+      },
+      "logger": {
+        "enabled": true,
+        "level": "info"
+      }
     }
 }

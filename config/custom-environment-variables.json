@@ -1,6 +1,7 @@
 {
     "App": {
         "port": "APP_PORT",
+        "cacheTtl": "3600",
         "database": {
             "HOST": "DB_HOST",
             "USER": "DB_USER",
