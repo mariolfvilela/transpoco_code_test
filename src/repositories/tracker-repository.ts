@@ -12,23 +12,29 @@ export class TrackerRepository extends BaseRepository<Tracker> {
   private dbConfig: IConfig = config.get('App.database');
 
   async getAll(
-    orderBy: 'ASC' | 'DESC' = 'ASC',
+    orderBy: 'ASC' | 'DESC' = 'DESC',
     orderField?: string,
     start_date?: Date,
     end_date?: Date
   ): Promise<Tracker[]> {
     // Get users from database
     try {
+      const validatedDates = this.validateDate(start_date, end_date);
       const conn = await connect();
       const query = `SELECT DISTINCT tracker_uid, speed
+      ${
+        validatedDates
+          ? ", DATE_FORMAT(insert_time,'%d/%m/%Y') AS insert_time"
+          : ''
+      }
       FROM ${this.dbConfig.get('TABLE')}
       WHERE (speed IS NOT NULL OR speed != '') and (tracker_uid IS NOT NULL OR tracker_uid != '')
       ${
-        this.validateDate(start_date, end_date)
+        validatedDates
           ? 'AND (insert_time BETWEEN FROM_UNIXTIME(' +
-            moment(start_date).unix() +
-            ') AND FROM_UNIXTIME(' +
             moment(end_date).unix() +
+            ') AND FROM_UNIXTIME(' +
+            moment(start_date).unix() +
             '))'
           : ' '
       }
@@ -39,7 +45,6 @@ export class TrackerRepository extends BaseRepository<Tracker> {
       // const[rows]: [Tracker[], FieldPacket[]]
       const [rows] = await conn.query<Tracker[]>(query, []);
       await conn.end();
-      logger.info(`rows: ${rows.length}`);
       return rows;
     } catch (error) {
       throw new TrackerRepositoryInternalError(error.message);
@@ -53,18 +58,20 @@ export class TrackerRepository extends BaseRepository<Tracker> {
   ): Promise<Tracker[]> {
     // Get Tracker from database
     try {
-      const query = `SELECT DISTINCT * , DATE_FORMAT(insert_time,'%d/%m/%Y') AS insert_time FROM ${this.dbConfig.get(
-        'TABLE'
-      )} WHERE (tracker_uid = ${tracker_uid} ) 
+      const query = `SELECT
+      /*+ MAX_EXECUTION_TIME = 30000 */
+       DISTINCT * 
+      , DATE_FORMAT(insert_time,'%d/%m/%Y') AS insert_time FROM 
+      ${this.dbConfig.get('TABLE')} WHERE (tracker_uid = ${tracker_uid} ) 
       ${
         this.validateDate(start_date, end_date)
           ? 'AND (insert_time BETWEEN FROM_UNIXTIME(' +
-            moment(start_date).unix() +
-            ') AND FROM_UNIXTIME(' +
             moment(end_date).unix() +
+            ') AND FROM_UNIXTIME(' +
+            moment(start_date).unix() +
             '))'
           : ' '
-      } ;`;
+      };`;
       const conn = await connect();
       const [rows] = await conn.query<Tracker[]>(
         query,

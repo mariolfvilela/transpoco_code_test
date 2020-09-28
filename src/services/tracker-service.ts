@@ -6,7 +6,7 @@ export class TrackerService {
   private readonly _trackerRepository = new TrackerRepository();
 
   async getAll(
-    orderBy: 'ASC' | 'DESC' = 'ASC',
+    orderBy: 'ASC' | 'DESC' = 'DESC',
     orderField?: string,
     start_date?: Date,
     end_date?: Date
