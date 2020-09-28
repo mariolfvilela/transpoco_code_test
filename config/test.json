@@ -1,6 +1,7 @@
 {
     "App": {
         "port": 3000,
+        "cacheTtl": 3600,
         "database": {
             "HOST": "database-cluster.cluster-cae7t0gajtw9.eu-west-1.rds.amazonaws.com",
             "USER": "testuser",
