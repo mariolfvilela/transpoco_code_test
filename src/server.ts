@@ -41,14 +41,7 @@ export class SetupServer extends Server {
     this.app.use(bodyParser.json());
     this.setupControllers();
     this.app.use(expressPino({ logger }));
-    this.app.use(
-      cors({
-        origin: '*',
-        methods: 'GET, POST, DELETE, PUT, PATCH, OPTIONS',
-        preflightContinue: false,
-        optionsSuccessStatus: 204,
-      })
-    );
+    this.app.use(cors({ origin: '*' }));
   }
 
   private setupControllers(): void {

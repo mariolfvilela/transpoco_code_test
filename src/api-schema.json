@@ -83,7 +83,7 @@
                 "content": {
                   "application/json": {
                     "schema": {
-                      "$ref": "#/components/schemas/TrackerResponse"
+                      "$ref": "#/components/schemas/TrackerPartResponse"
                     }
                   }
                 }
@@ -337,6 +337,20 @@
           }
         },
         "required": ["angle", "tracker_uid", "aquisition_time", "visible_satellites","engine","uid", "speed","hdop", "driver_ibutton", "voltage", "mileage", "insert_time", "event_info", "event_id"]
+      },
+      "TrackerPartResponse": {
+        "type": "object",
+        "properties": {
+          "tracker_uid": {
+            "$ref": "#/components/schemas/tracker_uid"
+          },
+          "speed": {
+            "$ref": "#/components/schemas/speed"
+          },
+          "insert_time": {
+            "$ref": "#/components/schemas/insert_time"
+          }
+        }
       },
       "TrackerResponse": {
         "type": "object",

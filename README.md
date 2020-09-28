@@ -62,8 +62,8 @@ Run the [Jest](https://jestjs.io/) <br />
 ### Testing routes
 
 - [`home`](http://localhost:3000/) - Documentation.
-- GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API should be able to return the rank ascendant or descendant. `/trackers?orderBy=desc`, `/trackers?orderBy=asc`
-- GET `/trackers/1101`. [`/trackers`](http://localhost:3000/trackers/1101) - Return all events filtered by tracker_uid
+- GET `/trackers`. [`/trackers`](http://localhost:3000/trackers) - Return a "rank" by max speed and tracker_uid, the API return the rank ascendant or descendant. `/trackers?orderBy=desc`, `/trackers?orderBy=asc`. Can be filtered by specific dates `/trackers?start_date=2020-07-20&end_date=2019-01-15`
+- GET `/trackers/1101`. [`/trackers`](http://localhost:3000/trackers/1101) - Return all events filtered by tracker_uid. Can be filtered by specific dates `/trackers?start_date=2020-07-20&end_date=2019-01-15`
 
 ---
 
@@ -73,5 +73,5 @@ Run the [Jest](https://jestjs.io/) <br />
 
 - 🔗 [Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers) ´´´´under construction´´´´
 
-- 🔗 [Click here to see the service - Umbler - Doc](https://transpoco-code-test-com.umbler.net/)
+- 🔗 [Click here to see the service - Umbler - Doc](https://transpoco-code-test-com.umbler.net/) ´´´´under construction´´´´
 - 🔗 [Click here to see the service - Umbler - `/trackers`](https://transpoco-code-test-com.umbler.net/trackers)
