@@ -6,6 +6,9 @@ import { ITrackerRepository } from '@src/repositories/interfaces/i-tracker-repos
 export class TrackerService
   extends BaseService<Tracker>
   implements ITrackerService<Tracker> {
+  /**
+   * @param {ITrackerRepository<Tracker>} _trackerRepository
+   */
   constructor(
     private readonly _trackerRepository: ITrackerRepository<Tracker>
   ) {

@@ -7,6 +7,9 @@ import { ITrackerService } from '@src/services/interfaces/i-tracker-service';
 
 @Controller('trackers')
 export class TrackerController extends BaseController<Tracker> {
+  /**
+   * @param {ITrackerService<Tracker>} _trackerService
+   */
   constructor(private readonly _trackerService: ITrackerService<Tracker>) {
     super();
   }
