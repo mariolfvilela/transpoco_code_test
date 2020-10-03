@@ -6,8 +6,11 @@ import {
 import { Tracker } from '@src/models/tracker';
 import { connect } from '@src/database';
 import moment from 'moment';
+import { ITrackerRepository } from '@src/repositories/interfaces/i-tracker-repository';
 
-export class TrackerRepository extends BaseRepository<Tracker> {
+export class TrackerRepository
+  extends BaseRepository<Tracker>
+  implements ITrackerRepository<Tracker> {
   async getAll(
     orderBy: 'ASC' | 'DESC' = 'DESC',
     orderField?: string,

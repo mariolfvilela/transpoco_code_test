@@ -12,6 +12,8 @@ import apiSchema from './api-schema.json';
 import expressPino from 'express-pino-logger';
 import cors from 'cors';
 import { apiErrorValidator } from './middlewares/api-error-validator';
+import { TrackerRepository } from './repositories/tracker-repository';
+import { TrackerService } from './services/tracker-service';
 
 export class SetupServer extends Server {
   private server?: http.Server;
@@ -45,7 +47,10 @@ export class SetupServer extends Server {
   }
 
   private setupControllers(): void {
-    const trackerController = new TrackerController();
+    const trackerController = new TrackerController(
+      // Dependency Inversion Principle
+      new TrackerService(new TrackerRepository())
+    );
     this.addControllers([trackerController]);
   }
 

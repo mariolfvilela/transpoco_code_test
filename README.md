@@ -73,10 +73,10 @@ Run the [Jest](https://jestjs.io/) <br />
 
 - 🔗 [Click here to see the service - Azure](https://transpoco.azurewebsites.net/trackers) ´´´´under construction´´´´
 
-- 🔗 [Click here to see the service - Umbler - Doc](https://transpoco-code-test-com.umbler.net/) 
+- 🔗 [Click here to see the service - Umbler - Doc](https://transpoco-code-test-com.umbler.net/) ´´´´Service-disabled due to lack of financial resources´´´´ 
 
-- 🔗 [Click here to see the service - Umbler - `/trackers`](https://transpoco-code-test-com.umbler.net/trackers)
+- 🔗 [Click here to see the service - Umbler - `/trackers`](https://transpoco-code-test-com.umbler.net/trackers) ´´´´Service-disabled due to lack of financial resources´´´´
 
-- 🔗 [Click here to see the service - Umbler - `/trackers?orderBy=desc&orderField=speed`](https://transpoco-code-test-com.umbler.net/trackers?orderBy=desc&orderField=speed)
+- 🔗 [Click here to see the service - Umbler - `/trackers?orderBy=desc&orderField=speed`](https://transpoco-code-test-com.umbler.net/trackers?orderBy=desc&orderField=speed) ´´´´Service-disabled due to lack of financial resources´´´´
 
-- 🔗 [Click here to see the service - Umbler - `/trackers/1101?start_date=2020-07-20&end_date=2019-01-15`](https://transpoco-code-test-com.umbler.net/trackers/1101?start_date=2020-07-20&end_date=2019-01-15)
+- 🔗 [Click here to see the service - Umbler - `/trackers/1101?start_date=2020-07-20&end_date=2019-01-15`](https://transpoco-code-test-com.umbler.net/trackers/1101?start_date=2020-07-20&end_date=2019-01-15) ´´´´Service-disabled due to lack of financial resources´´´´
