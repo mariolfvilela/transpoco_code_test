@@ -2,13 +2,12 @@ import { Controller, Get } from '@overnightjs/core';
 import logger from '@src/logger';
 import { Request, Response } from 'express';
 import { Tracker } from '@src/models/tracker';
-import { TrackerService } from '@src/services/tracker-service';
 import { BaseController } from '@src/controllers/base-controller';
+import { ITrackerService } from '@src/services/interfaces/i-tracker-service';
 
 @Controller('trackers')
 export class TrackerController extends BaseController<Tracker> {
-  private readonly _trackerService = new TrackerService();
-  constructor() {
+  constructor(private readonly _trackerService: ITrackerService<Tracker>) {
     super();
   }
 

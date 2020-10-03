@@ -1,10 +1,16 @@
 import { Tracker } from '@src/models/tracker';
-import { TrackerRepository } from '@src/repositories/tracker-repository';
 import { BaseService, TrackerServiceInternalError } from './base-service';
+import { ITrackerService } from '@src/services/interfaces/i-tracker-service';
+import { ITrackerRepository } from '@src/repositories/interfaces/i-tracker-repository';
 
-export class TrackerService extends BaseService<Tracker> {
-  private readonly _trackerRepository = new TrackerRepository();
-
+export class TrackerService
+  extends BaseService<Tracker>
+  implements ITrackerService<Tracker> {
+  constructor(
+    private readonly _trackerRepository: ITrackerRepository<Tracker>
+  ) {
+    super();
+  }
   async getAll(
     orderBy: 'ASC' | 'DESC' = 'DESC',
     orderField?: string,
